@@ -7,6 +7,7 @@ PRINTING_STARTED = "PRINTING_STARTED"
 PRINTING_STOPPED = "PRINTING_STOPPED"
 TURNED_ON = "TURNED_ON"
 USER_ACTION = "USER_ACTION"
+FILE_UPLOADED = "FILE_UPLOADED"
 
 # Event having higher or same priority (lower or equal number here) cancells the tasks placed by previous events
 # Highest priority is 1.
@@ -15,6 +16,7 @@ PRIORITIES = {
     STARTUP: 2,
     PRINTING_STARTED: 2,
     PRINTING_STOPPED: 2,
+    FILE_UPLOADED: 2,
     TURNED_ON: 3
 }
 
@@ -64,6 +66,10 @@ def get_default_settings():
                 TURNED_ON: {
                     "state": None,
                     "delay": 0
+                },
+                FILE_UPLOADED: {
+                    "state": None,
+                    "delay": 0
                 }
             },
         },
@@ -95,6 +101,10 @@ def get_default_settings():
                     "delay": 0,
                 },
                 TURNED_ON: {
+                    "state": None,
+                    "delay": 0
+                },
+                FILE_UPLOADED: {
                     "state": None,
                     "delay": 0
                 }
@@ -130,6 +140,10 @@ def get_default_settings():
                 TURNED_ON: {
                     "state": None,
                     "delay": 0
+                },
+                FILE_UPLOADED: {
+                    "state": None,
+                    "delay": 0
                 }
             },
         },
@@ -163,6 +177,10 @@ def get_default_settings():
                 TURNED_ON: {
                     "state": None,
                     "delay": 0
+                },
+                FILE_UPLOADED: {
+                    "state": None,
+                    "delay": 0
                 }
             },
         },
@@ -191,6 +209,10 @@ def get_default_settings():
                     "delay": 0,
                 },
                 TURNED_ON: {
+                    "state": None,
+                    "delay": 0
+                },
+                FILE_UPLOADED: {
                     "state": None,
                     "delay": 0
                 }
@@ -223,6 +245,10 @@ def get_default_settings():
                 TURNED_ON: {
                     "state": None,
                     "delay": 0
+                },
+                FILE_UPLOADED: {
+                    "state": None,
+                    "delay": 0
                 }
             },
         },
@@ -251,6 +277,10 @@ def get_default_settings():
                     "delay": 0,
                 },
                 TURNED_ON: {
+                    "state": None,
+                    "delay": 0
+                },
+                FILE_UPLOADED: {
                     "state": None,
                     "delay": 0
                 }
@@ -283,6 +313,10 @@ def get_default_settings():
                 TURNED_ON: {
                     "state": None,
                     "delay": 0
+                },
+                FILE_UPLOADED: {
+                    "state": None,
+                    "dealy": 0
                 }
             },
         },
@@ -305,7 +339,8 @@ def get_ui_vars():
             STARTUP: { "label": "on Startup", "disabled": [] },
             PRINTING_STARTED: { "label": "on Printing Started", "disabled": [] },
             PRINTING_STOPPED: { "label": "on Printing Stopped", "disabled": [] },
-            TURNED_ON: { "label": "after Turned ON", "disabled": [ "true" ] }
+            TURNED_ON: { "label": "after Turned ON", "disabled": [ "true" ] },
+            FILE_UPLOADED: { "label": "On File Upload", "disabled": [] }
         },
         "boolean": {
             "true": { "caption": "YES", "color": "info" },

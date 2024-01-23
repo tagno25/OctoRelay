@@ -15,7 +15,7 @@ from .const import (
     get_default_settings, get_templates, get_ui_vars, RELAY_INDEXES, ASSETS, SWITCH_PERMISSION, UPDATES_CONFIG,
     POLLING_INTERVAL, UPDATE_COMMAND, GET_STATUS_COMMAND, LIST_ALL_COMMAND, AT_COMMAND, SETTINGS_VERSION,
     STARTUP, PRINTING_STOPPED, PRINTING_STARTED, PRIORITIES, FALLBACK_PRIORITY, PREEMPTIVE_CANCELLATION_CUTOFF,
-    CANCEL_TASK_COMMAND, USER_ACTION, TURNED_ON
+    CANCEL_TASK_COMMAND, USER_ACTION, TURNED_ON, FILE_UPLOADED
 )
 from .driver import Relay
 from .task import Task
@@ -185,6 +185,9 @@ class OctoRelayPlugin(
             self.handle_plugin_event(PRINTING_STOPPED)
         elif event == Events.PRINT_FAILED:
             self.handle_plugin_event(PRINTING_STOPPED)
+        elif event == Events.UPLOAD:
+            if payload is not None and "print" in payload:
+                self.handle_plugin_event(FILE_UPLOADED)
         elif hasattr(Events, "CONNECTIONS_AUTOREFRESHED"): # Requires OctoPrint 1.9+
             if event == Events.CONNECTIONS_AUTOREFRESHED:
                 if payload is not None and "ports" in payload and len(payload["ports"]) > 0:

@@ -68,7 +68,12 @@ def v2(settings, logger):
             "PRINTING_STOPPED": {
                 "state": False if bool(auto_off_after_print) else None,
                 "delay": int(before.get("auto_off_delay") or 0)
+            },
+            "FILE_UPLOADED": {
+                "state": False if bool(auto_off_after_print) else None,
+                "delay": int(before.get("auto_off_delay") or 0)
             }
+
         }
         logger.debug(f"Replacing it with: {after}")
         settings.set([index], after)
